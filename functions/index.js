@@ -9,8 +9,12 @@ config();
 
 const app = express();
 
-// Enable CORS for all origins (you can modify this to allow specific domains in production)
-app.use(cors());  // Add this line to allow cross-origin requests
+app.use(cors({
+    origin: '*', // Allow all origins or set this to a specific frontend URL for security
+    methods: ['GET', 'POST', 'OPTIONS'],  // Allow these methods for CORS
+    allowedHeaders: ['Content-Type', 'Authorization'],  // Allow these headers for CORS
+    credentials: true, // Allow credentials (cookies, authorization headers)
+}));
 
 app.use(express.json());
 
