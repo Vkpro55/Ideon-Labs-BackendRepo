@@ -1,6 +1,6 @@
 const admin = require('firebase-admin');
-const fs = require('node:fs');
-const serviceAccount = JSON.parse(fs.readFileSync('./firebase-config.json').toString())
+// const fs = require('node:fs');
+// const serviceAccount = JSON.parse(fs.readFileSync('./firebase-config.json').toString())
 
 
 if (!admin.apps.length) {
