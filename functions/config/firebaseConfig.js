@@ -7,7 +7,8 @@ if (!admin.apps.length) {
     try {
         admin.initializeApp({
             /* ===  credential: admin.credential.applicationDefault() === */
-            credential: admin.credential.cert(serviceAccount),
+            // credential: admin.credential.cert(serviceAccount),
+            credential: admin.credential.applicationDefault(),
             /* === databaseURL: process.env.FIREBASE_DATABASE_URL // Add this if needed. === */
         });
     } catch (error) {
