@@ -44,7 +44,7 @@ async function cancelSlotController(req, res, db) {
 
 async function getOneUserBookings(req, res, db, auth) {
     try {
-        const { userId } = req.body;
+        const { userId } = req.query; 
         if (!userId) {
             return res.status(400).json({ error: 'Missing required fields: userId.' });
         }
