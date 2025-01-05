@@ -1,6 +1,8 @@
 // const admin = require('firebase-admin');
 // const fs = require('node:fs');
 // const serviceAccount = JSON.parse(fs.readFileSync('./firebase-config.json').toString())
+// const serviceAccountString = JSON.stringify(serviceAccount);
+// console.log(serviceAccountString);
 
 // console.log(serviceAccount);
 
@@ -30,26 +32,14 @@
 
 
 
-const admin = require('firebase-admin');
-<<<<<<< HEAD
-require('dotenv').config();
+var admin = require("firebase-admin");
+var serviceAccount = require("../firebase-config.json");
 
 try {
-    console.log(process.env.FIREBASE_SERVICE_ACCOUNT);
-
-    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
     if (!serviceAccount) {
         throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable not found.  Check your Render settings.");
     }
 
-=======
-
-try {
-    const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
-    if (!serviceAccount) {
-        throw new Error("FIREBASE_SERVICE_ACCOUNT environment variable not found.");
-    }
->>>>>>> 6dea253f0f315bd5071ab4f713c75a253ef39968
     if (!admin.apps.length) {
         admin.initializeApp({
             credential: admin.credential.cert(serviceAccount)
@@ -62,11 +52,15 @@ try {
     module.exports = { db, auth };
 } catch (error) {
     console.error("Error initializing Firebase:", error);
-<<<<<<< HEAD
-    // Handle the error appropriately for production (e.g., return a 500 error)
-    throw error; // Re-throw to prevent silent failure
-=======
-    // Handle the error appropriately, such as by returning a 500 error to the client.
-    throw error; // Re-throw to prevent the application from silently failing.
->>>>>>> 6dea253f0f315bd5071ab4f713c75a253ef39968
+    throw error;
 }
+
+
+// var admin = require("firebase-admin");
+// var serviceAccount = require("../firebase-config.json");
+
+// console.log(serviceAccount)
+
+// admin.initializeApp({
+//     credential: admin.credential.cert(serviceAccount)
+// });
